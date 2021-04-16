@@ -51,11 +51,11 @@ dis1(), insertionsort(), insentionsort1() οι οποίες ταξινομούν
 και τα id των στοιχείων.
 
 Στην συνέχεια παρουσιάζονται μερικά πειραματικά
-στοιχεία από συστοιχία υπολογιστών.
+στοιχεία.
 
 
-![Screenshot from 2021-04-16 13-37-13](https://user-images.githubusercontent.com/77286926/115013146-5ceb6080-9eb9-11eb-9216-55ae0581cd7d.png)
 ![Screenshot from 2021-04-16 13-38-17](https://user-images.githubusercontent.com/77286926/115013148-5d83f700-9eb9-11eb-821d-52da743f21e0.png)
+![Screenshot from 2021-04-16 13-37-13](https://user-images.githubusercontent.com/77286926/115013146-5ceb6080-9eb9-11eb-9216-55ae0581cd7d.png)
 
 
 Παρατηρούμε ότι οι χρόνοι μετά από έναν συγκεκριμένο αριθμό
