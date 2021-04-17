@@ -53,22 +53,37 @@ dis1(), insertionsort(), insentionsort1() οι οποίες ταξινομούν
 Στην συνέχεια παρουσιάζονται μερικά πειραματικά
 στοιχεία.
 
+
 corel{
+
 ColorHistogram  n=88040, d=32
+
 ColorMoments    n=88040, d=9
+
 coocTexture     n=88040, d=16
+
 LayoutHistory   n=88040, d=32
+
 }
+
 
 tv{
+
 BBC       n=217720, d=17
+
 CNN       n=22545,  d=17
+
 CNNIBN    n=33117,  d=17
+
 NDTV      n=17051,  d=17
+
 TIMESNOW  n=39252,  d=17
+
 }
 
+
 MiniBOoNE_PID n=130064, d=50
+
 
 features      n=106574, d=518
 
