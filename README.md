@@ -1,96 +1,21 @@
-# k-NN--Distributed-MPI
-k-NN--Distributed-MPI
+# Distributed knn
+
+recursive
+
+k-NN - Distributed-MPI
+
+Function V0
+
+Function V0 implements the basic idea of ​​finding nearest neighbors (k-NN). Uses high performance BLAS routines. Once a k-NN is found, the "work ()" method is used, which renews the k-NNs while maintaining their classification.
+
+Function V1
+
+The V1 function distributes the calculation process of V0's nearest neighbors to many machines. Using the following method: The first procedure distributes all the data to the other "processes" then each process locally calculates the nearest neighbors of its points using V0. Specifically in each step each process holding firmly its initial points (which it accepted from the first procedure) as query points accepts the points of the previous one and sends its own to the next procedure.
+
+Using V0, the nearest neighbors are calculated using the data it receives as corpus points and its initial points as query points. At each step it renews the nearest neighbors of its fixed query points.
+
+Function V2
+
+The V2 function distributes the nearest neighbor calculation (k-NN) process based on the creation of a Vantage Point Tree. Where each node of the tree is a point of the original set. This way the search for a neighbor is done in logN steps and the total search of k-NN in NlogN steps. The search () function in each retro call renews the nearest neighbors of the point using the work () method. The V2 function then uses the encoder () method which encodes the subtree to be sent to the next prosses and the decoder () method which decodes the data received by the current prosses from the previous one. Finally the V2 function fills the knnresult structure from the struct pointData table.
 
 
-Συνάρτηση V0
-
-Η συνάρτηση V0 υλοποιεί την βασική ιδέα ευρέσεις κοντινότερων
-γειτόνων (k-NN). Χρησιμοποιεί ρουτίνες υψηλής αποδόσεις BLAS.
-Όταν υπολογίζετε η κάθε απόστασης ελέγχετε αν είναι μικρότερη
-από τον μεγαλύτερο k-NN και έπειτα χρησιμοποιείτε μια μέθοδος
-work() η οποία ανανεώνει τους k-NN διατηρώντας την ταξινόμηση
-τους.
-
-Συνάρτηση V1
-
-Η συνάρτηση V1 διανέμει όλοι την διαδικασία υπολογισμού των κοντινότερων
-γειτόνων της V0 σε πολλά μηχανήματα. Χρησιμοποιώντας την εξής μέθοδο:
-Η πρώτη διαδικασία διανέμει όλα τα στοιχεία σε όλες της υπόλοιπες
-διαδικασίες στην συνέχεια η κάθε διαδικασία υπολογίζει τοπικά τους
-κοντινότερους γειτόνους των σημείων της χρησιμοποιώντας την V0.
-Συγκεκριμένα σε κάθε βήμα η κάθε διαδικασία κρατώντας σταθερά τα αρχικά
-της σημεία (που δέχτηκε από την πρώτη διαδικασία) ως query points δέχεται
-τα σημεία της προηγούμενης και στέλνει τα δικά της στην επόμενη διαδικασία.
-
-Με την χρήση της V0 υπολογίζει τους κοντινότερους γείτονες χρησιμοποιώντας
-τα στοιχεία που δέχεται ως corpus points και τα αρχικά της σημεία ως query
-points. Σε κάθε βήμα ανανεώνει τους κοντινότερους γείτονές των σταθερών
-της query points.
-
-Συνάρτηση V2
-
-Η συνάρτηση V2 διανέμει την διαδικασία υπολογισμού κοντινότερων γειτόνων
-(k-NN) η οποία βασίζετε στην δημιουργία ενός Vantage Point Tree. Οπού ο
-κάθε κόμβος του δέντρου είναι ένα σημείο του αρχικού συνόλου. Με αυτόν το
-τρόπο η αναζήτηση ενός γείτονα γίνετε σε logN βήματα και η συνολική
-αναζήτηση των k-NN σε NlogN βήματα.
-Στην αρχή η συνάρτηση V2 χρησιμοποιεί την μέθοδο sortX() η οποία ταξινομεί
-και γεμίζει έναν πίνακα με τα id των στοιχείων, με τα καταλληλά offsets στην
-συνέχεια η fill() γεμίζει έναν πίνακα από δομές struct pointData. ΟΙ δομές
-pointData περιέχουν τις συντεταγμένες, τις αποστάσεις και τα id των knn του
-κάθε σημείου. Η συνάρτηση search σε κάθε αναδρομική κλήση ανανεώνει τους
-κοντινότερους γείτονες του σημείου με την χρήση της μεθόδου work().
-Στην συνέχεια η συνάρτηση V2 χρησιμοποίει την μέθοδο encoder() η οποία
-κωδικοποιεί το υποδέντρο που θα σταλθεί στο επόμενο prosses και την
-μέθοδο decoder() η οποία αποκωδικοποιεί τα στοιχεία που δέχεται το τρέχον
-prosses από το προηγούμενο.
-Στο τέλος η συναρτάς V2 γεμίζει την δομή knnresult από τον πίνακα struct
-pointData.
-Σημείωση: επιπλέον υπάρχουν οι μέθοδοί distance(), binarysearch(), dis(),
-dis1(), insertionsort(), insentionsort1() οι οποίες ταξινομούν των αρχικό πίνακα
-και τα id των στοιχείων.
-
-Στην συνέχεια παρουσιάζονται μερικά πειραματικά
-στοιχεία.
-
-
-corel{
-
-ColorHistogram  n=88040, d=32
-
-ColorMoments    n=88040, d=9
-
-coocTexture     n=88040, d=16
-
-LayoutHistory   n=88040, d=32
-
-}
-
-
-tv{
-
-BBC       n=217720, d=17
-
-CNN       n=22545,  d=17
-
-CNNIBN    n=33117,  d=17
-
-NDTV      n=17051,  d=17
-
-TIMESNOW  n=39252,  d=17
-
-}
-
-
-MiniBOoNE_PID n=130064, d=50
-
-
-features      n=106574, d=518
-
-
-![Screenshot from 2021-04-16 13-38-17](https://user-images.githubusercontent.com/77286926/115013148-5d83f700-9eb9-11eb-821d-52da743f21e0.png)
-![Screenshot from 2021-04-16 13-37-13](https://user-images.githubusercontent.com/77286926/115013146-5ceb6080-9eb9-11eb-9216-55ae0581cd7d.png)
-
-
-Παρατηρούμε ότι οι χρόνοι μετά από έναν συγκεκριμένο αριθμό
-από processes σταθεροποιούνται.
