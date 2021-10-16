@@ -1,4 +1,4 @@
-# Distributed knn
+# Distributed-kNN
 
 
 k-NN - Distributed-MPI
