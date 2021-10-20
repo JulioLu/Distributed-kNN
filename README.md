@@ -9,7 +9,7 @@ Function V0 implements the basic idea of finding nearest neighbors (k-NN). Uses 
 
 Function V1
 
-The V1 function distributes the calculation process of V0's nearest neighbors to many machines. Using the following method: The first process distributes all the data to the other "processes" then each process locally calculates the nearest neighbors of its points using V0. Specifically in each step each process holding firmly its initial points (as query points) accepts the points of the previous one (as corpus points)  and sends its own to the next process.
+The V1 function distributes the calculation process of V0's nearest neighbors to many machines. Using the following method: The first process distributes all the data to the other "processes" then each process locally calculates the nearest neighbors of its points using V0. Specifically in each step each process holding firmly its initial points (as query points), accepts the points of the previous one (as corpus points)  and sends its own to the next process.
 
 Function V2
 
